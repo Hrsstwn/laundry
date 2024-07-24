@@ -10,12 +10,14 @@ class Barang extends Model
     use HasFactory;
 
     protected $table = 'barang';
-    protected $primaryKey = 'kode_barang';
+    protected $primaryKey = 'nama_barang';
     protected $fillable = [
-        'nama_barang',
-        'harga',
+        'kode_barang',
+        'harga'
     ];
 
-    // public $incrementing = false;
-    // protected $keyType = 'string';
+    public function pembelian_barang()
+    {
+        return $this->belongsTo(Pembelian_Barang::class, 'kode_barang');
+    }
 }
